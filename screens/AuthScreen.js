@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, AsyncStorage } from 'react-native';
 import TutorialScreen from './TutorialScreen';
+import Button from '../components/common/Button';
 
 export default class AuthScreen extends Component {
 	componentDidMount() {
@@ -10,9 +11,6 @@ export default class AuthScreen extends Component {
 				AsyncStorage.setItem('alreadyLaunched', 'true').then(() => {
 					this.props.navigation.navigate('TutorialScreen');
 				});
-			} else {
-				AsyncStorage.removeItem('alreadyLaunched');
-				// this.props.navigation.navigate('TutorialScreen');
 			}
 		});
 	}
@@ -20,7 +18,15 @@ export default class AuthScreen extends Component {
 	render() {
 		return (
 			<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-				<Text> AuthScreen </Text>
+				<Button
+					onButtonPress={() => this.props.navigation.navigate('SignInScreen')}
+					backgroundColor="orange"
+					title={'Login with Email'}
+				/>
+				<Button
+					onButtonPress={() => this.props.navigation.navigate('SignUpScreen')}
+					title={'Sign Up  with Email'}
+				/>
 			</View>
 		);
 	}

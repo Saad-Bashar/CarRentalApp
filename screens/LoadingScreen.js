@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, ActivityIndicator } from 'react-native';
 import Colors from '../constants/Colors';
-import firebase from '../Firebase';
+import firebase from 'firebase';
 
 export default class LoadingScreen extends Component {
 	constructor(props) {
@@ -17,7 +17,7 @@ export default class LoadingScreen extends Component {
 
 		firebase.auth().onAuthStateChanged(user => {
 			if (!user) {
-				navigation.navigate('AuthScreen');
+				navigation.navigate('Auth');
 			} else {
 				navigation.navigate('Main');
 			}
