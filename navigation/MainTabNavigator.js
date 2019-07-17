@@ -6,10 +6,11 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import HostScreen from '../screens/HostScreen';
 
 const config = Platform.select({
 	web: { headerMode: 'screen' },
-	default: {},
+	default: { headerMode: 'none' },
 });
 
 const HomeStack = createStackNavigator(
@@ -33,19 +34,19 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const HostStack = createStackNavigator(
 	{
-		Links: LinksScreen,
+		Host: HostScreen,
 	},
 	config
 );
 
-LinksStack.navigationOptions = {
-	tabBarLabel: 'Links',
+HostStack.navigationOptions = {
+	tabBarLabel: 'Host',
 	tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />,
 };
 
-LinksStack.path = '';
+HostStack.path = '';
 
 const SettingsStack = createStackNavigator(
 	{
@@ -65,7 +66,7 @@ SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
 	HomeStack,
-	LinksStack,
+	HostStack,
 	SettingsStack,
 });
 
