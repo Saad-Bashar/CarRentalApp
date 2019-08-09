@@ -44,7 +44,7 @@ export default class SignInScreen extends Component {
 				if (user) {
 					const resetAction = StackActions.reset({
 						index: 0,
-						actions: [NavigationActions.navigate({ routeName: 'ProfileScreen' })],
+						actions: [NavigationActions.navigate({ routeName: 'Home' })],
 					});
 
 					this.props.navigation.dispatch(resetAction);

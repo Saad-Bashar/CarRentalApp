@@ -4,9 +4,11 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import HostScreen from '../screens/HostScreen';
+import Cars from '../screens/Cars';
+import Reserve from '../screens/Reserve';
+import Reservations from '../screens/Reservations';
+import ProfileScreen from '../screens/ProfileScreen';
 
 const config = Platform.select({
 	web: { headerMode: 'screen' },
@@ -34,40 +36,58 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const HostStack = createStackNavigator(
+const CarStack = createStackNavigator(
 	{
-		Host: HostScreen,
+		Cars: Cars,
+		Reserve: Reserve,
 	},
 	config
 );
 
-HostStack.navigationOptions = {
-	tabBarLabel: 'Host',
-	tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />,
+CarStack.navigationOptions = {
+	tabBarLabel: 'Cars',
+	tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-car' : 'md-car'} />,
 };
 
-HostStack.path = '';
+CarStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const ReservationsStack = createStackNavigator(
 	{
-		Settings: SettingsScreen,
+		ReservationsScreen: Reservations,
 	},
 	config
 );
 
-SettingsStack.navigationOptions = {
-	tabBarLabel: 'Settings',
+ReservationsStack.navigationOptions = {
+	tabBarLabel: 'Reservations',
 	tabBarIcon: ({ focused }) => (
 		<TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
 	),
 };
 
-SettingsStack.path = '';
+ReservationsStack.path = '';
+
+const ProfileStack = createStackNavigator(
+	{
+		ProfileScreen: ProfileScreen,
+	},
+	config
+);
+
+ProfileStack.navigationOptions = {
+	tabBarLabel: 'Profile',
+	tabBarIcon: ({ focused }) => (
+		<TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+	),
+};
+
+ProfileStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
 	HomeStack,
-	HostStack,
-	SettingsStack,
+	CarStack,
+	ReservationsStack,
+	ProfileStack,
 });
 
 tabNavigator.path = '';
