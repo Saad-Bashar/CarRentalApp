@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import FlashMessage from 'react-native-flash-message';
 
 import ConfigureStore from './ConfigureStore';
 // import FlashMessage from "react-native-flash-message";
@@ -43,6 +44,7 @@ export default class App extends React.Component {
 			<Provider store={this.store}>
 				<View style={{ flex: 1 }}>
 					<AppNavigator />
+					<FlashMessage position="top" />
 				</View>
 			</Provider>
 		);
